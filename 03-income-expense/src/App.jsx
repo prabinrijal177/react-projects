@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import {v4 as uuidv4} from 'uuid';
 import './App.css';
 
 
@@ -18,6 +19,27 @@ function App() {
     amount: false,
 
   });
+
+  const [total, setTotal] = useState(0);
+
+  useEffect(() =>{
+    const newTotal = statements.reduce((sum, {type,amount}) =>{
+      if (type === "expense"){
+        return sum - parseFloat(amount)
+      }else return sum + parseFloat(amount)
+    },0)
+    setTotal(newTotal);
+  },[statements]);
+
+  const renderTotal = () =>{
+    if(total > 0){
+      return <h1 className='total-text success'>+{Math.abs(total)}</h1>
+    }else if(total < 0){
+      return <h1 className='total-text danger'>-{Math.abs(total)}</h1>
+  }else{
+    return <h1 className='total-text danger'>{Math.abs(total)}</h1>
+  }
+};
 
   const handleUpdateInput = (e) =>{
     setInput({
@@ -46,6 +68,7 @@ function App() {
         amount: false,
       });
       setStatements([...statements,{
+        id: uuidv4(),
         name: statement,
         amount: parseFloat(amount).toFixed(2),
         type: statementType,
@@ -63,8 +86,7 @@ function App() {
   return(
   <main>
      <div>
-
-      <h2 className="total-text">0</h2>
+      {renderTotal()}
       <div className="input-container">
 
         <input type="text" placeholder='Income or expense' onChange={handleUpdateInput}
@@ -89,14 +111,14 @@ function App() {
         <button onClick={handleAddNewStatement}>+</button>
       </div>
       <div>
-  {statements.map((statement) => (
-    <div className="card" key={statement.id}>
+  {statements.map(({name, date, type, amount, id}) => (
+    <div className="card" key={id}>
       <div className="card-info">
-        <h4>{statement.name}</h4>
-        <p>{statement.date}</p>
+        <h4>{name}</h4>
+        <p>{date}</p>
       </div>
-      <p className={`amount-text ${statement.type === "income" ? "success" : "danger"}`}>
-        {statement.type === "income" ? "+" : "-"}${statement.amount}
+      <p className={`amount-text ${type === "income" ? "success" : "danger"}`}>
+        {type === "income" ? "+" : "-"}${amount}
       </p>
     </div>
   ))}
@@ -107,3 +129,4 @@ function App() {
 )}
 
 export default App;
+
