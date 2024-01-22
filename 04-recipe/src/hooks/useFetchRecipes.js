@@ -29,7 +29,7 @@ const useFetchRecipes = () => {
       try {
         const reqOptions = {...options}
         if(searchTerm){
-            reqOptions.params.q = searchTerm
+            reqOptions.params.q = searchTerm;
         }
         const response = await axios.request(options);
         setRecipes(response.data.results);

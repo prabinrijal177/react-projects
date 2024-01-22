@@ -1,14 +1,11 @@
 /* eslint-disable react/prop-types */
+import { Outlet } from "react-router-dom";
 
-import { Outlet } from "react-router-dom"
-
-export default function RecipeInfo({instructions, image}) {
+export default function RecipeInfo({ instructions, image, ingredients }) {
   return (
     <div className="recipe-info">
-      <Outlet/>
-        <img src={image} alt="" className="recipe-img" />
-      </div>
-
+      <Outlet context={{ instructions, ingredients }} />
+      <img className="recipe-img" src={image} alt="" />
     </div>
-  )
+  );
 }

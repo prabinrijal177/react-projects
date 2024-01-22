@@ -7,6 +7,8 @@ import HomePage from './pages/HomePage.jsx';
 import AboutPage from './pages/AboutPage.jsx';
 import RecipePage from './pages/RecipePage.jsx';
 import ErrorPage from './pages/ErrorPage.jsx';
+import Instruction from './components/Instruction.jsx';
+import Ingredients from './components/Ingredients.jsx';
 
 
 const router = createBrowserRouter(
@@ -16,8 +18,8 @@ const router = createBrowserRouter(
     <Route path='/' element ={<HomePage/>} />
     <Route path='/about' element ={<AboutPage/>} />
     <Route path='/recipe/:id' element={<RecipePage/>}>
-      <Route path = "/recipe/:id/ingredients" element={<h1>Ingredients</h1>}/>
-      <Route path = "/recipe/:id/instructions" element={<h1>Instructions</h1>}/>
+      <Route path = "/recipe/:id/ingredients" element={<Ingredients/>}/>
+      <Route path = "/recipe/:id/instructions" element={<Instruction/>}/>
   </Route>
   </Route>
   ),

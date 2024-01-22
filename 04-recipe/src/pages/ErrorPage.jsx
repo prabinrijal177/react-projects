@@ -8,5 +8,5 @@ export default function ErrorPage() {
         <Error message={error.statusText} explanation={error.data}/>
 
     </div>
-  )
+  );
 }

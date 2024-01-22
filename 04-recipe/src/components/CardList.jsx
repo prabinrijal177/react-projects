@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-no-undef */
 /* eslint-disable react/prop-types */
 
-// import Card from "./Card";
+import Card from "./Card";
 
 // export const recipes = [
 //     {
@@ -34,8 +34,7 @@
 //  },
 // ];
 
-// eslint-disable-next-line react/prop-types
-export default function CardList({recipes}) {
+export default function CardList({ recipes }) {
   return (
     <section className="cards">
       {recipes.map((recipe) => (

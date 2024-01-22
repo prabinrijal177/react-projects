@@ -11,9 +11,9 @@ function App() {
     <Outlet/>
 
     </main>
-    
+
    </div>
-  )
+  );
 }
 
 export default App;
