@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable no-unused-vars */
 import { useState } from "react";
 import { useSearchParams } from "react-router-dom";
 
@@ -32,7 +34,7 @@ function Header({ handleSearch }) {
       </div>
       <div>
         <img
-          src="https://hips.hearstapps.com/hmg-prod/images/how-to-make-french-toast-1589827448.jpg?crop=0.734xw:0.490xh;0.0897xw,0.323xh&resize=1200:*"
+          src="recipe.jpg"
           alt=""
           className="main_img"
         />
