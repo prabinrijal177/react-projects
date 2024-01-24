@@ -6,11 +6,11 @@ function App() {
   const [showModal, setShowModal] = useState(false);
   const [gifts, setGifts] = useState([]);
 
-  const handleOpen = setShowModal(true);
-  const handleClose = setShowModal(false);
+  const handleOpen = () => setShowModal(true);
+  const handleClose = ()=>  setShowModal(false);
 
   const handleSave = (gift) => {
-    setGifts(gift);
+        setGifts([...gifts, gift]);
   };
 
   return (
